@@ -26,4 +26,19 @@ class Post extends Model
             ]
         ];
     }
+
+    /**
+     * @param $res
+     * @param $admin
+     */
+    public static function addExternalPost($res, $admin)
+    {
+        $newPost = new Post;
+        $newPost->title = $res['title'];
+        $newPost->slug = $res['title'];
+        $newPost->description = $res['description'];
+        $newPost->created_at = $res['publication_date'];
+        $newPost->user_id = $admin->id;
+        $newPost->save();
+    }
 }

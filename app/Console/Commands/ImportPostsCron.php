@@ -5,11 +5,8 @@ namespace App\Console\Commands;
 
 use App\Models\Post;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
-
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 
 class ImportPostsCron extends Command
@@ -52,13 +49,7 @@ class ImportPostsCron extends Command
 
         if($admin){
             foreach ($results as $res){
-                $newPost = new Post;
-                $newPost->title = $res['title'];
-                $newPost->slug = $res['title'];
-                $newPost->description = $res['description'];
-                $newPost->created_at = $res['publication_date'];
-                $newPost->user_id = $admin->id;
-                $newPost->save();
+                Post::addExternalPost($res, $admin);
             }
         }
 
