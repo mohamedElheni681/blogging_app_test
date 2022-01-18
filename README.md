@@ -34,3 +34,7 @@ docker network create shared_blog
 ```
 
 
+## RUN TEST
+```bash
+./vendor/bin/sail artisan test
+```

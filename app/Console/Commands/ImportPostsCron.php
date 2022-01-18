@@ -44,21 +44,24 @@ class ImportPostsCron extends Command
      */
     public function handle()
     {
-        $response = Http::get('https://sq1-api-test.herokuapp.com/posts');
+        $response = Http::get(config('blog.external_blogging_platform'));
         
         $results = ($response->json())['data'];
 
-        $admin = User::where('email','customer@test.com')->first();
+        $admin = User::where('email',config('blog.admin_mail'))->first();
 
-        foreach ($results as $res){
-            $newPost = new Post;
-            $newPost->title = $res['title'];
-            $newPost->slug = $res['title'];
-            $newPost->description = $res['description'];
-            $newPost->created_at = $res['publication_date'];
-            $newPost->user_id = $admin->id;
-            $newPost->save();
+        if($admin){
+            foreach ($results as $res){
+                $newPost = new Post;
+                $newPost->title = $res['title'];
+                $newPost->slug = $res['title'];
+                $newPost->description = $res['description'];
+                $newPost->created_at = $res['publication_date'];
+                $newPost->user_id = $admin->id;
+                $newPost->save();
+            }
         }
+
     }
 
 
