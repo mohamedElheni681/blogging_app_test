@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -90,18 +91,13 @@ class PostsController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param $slug
+     * @param UpdatePostRequest $request
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $slug)
+    public function update(UpdatePostRequest $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
-        Post::where('slug', $slug)
+        Post::where('id', $id)
             ->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),

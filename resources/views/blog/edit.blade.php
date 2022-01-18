@@ -7,7 +7,7 @@
         <div class="card-body">
             <h3 class="card-title w-100">{{__('post.update_post')}}</h3>
             <div class="card-text p-3">
-                <form action="/blog/{{ $post->slug }}" method="POST" class="form" id="post_form">
+                <form action="/blog/{{ $post->id }}" method="POST" class="form" id="post_form">
                     @csrf
                     @method('PUT')
 
