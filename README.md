@@ -3,6 +3,9 @@
 git clone https://github.com/mohamedElheni681/blogging_app_test.git
 ```
 ```bash
+cd blogging_app_test/
+```
+```bash
 composer install
 ```
 ```bash
@@ -18,7 +21,7 @@ php artisan key:generate
 docker network create shared_blog
 ```
 ```bash
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 ```bash
 ./vendor/bin/sail artisan migrate
