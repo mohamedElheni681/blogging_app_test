@@ -2,7 +2,6 @@
 ```bash
 git clone https://github.com/mohamedElheni681/blogging_app_test.git
 ```
-```
 ```bash
 composer install
 ```
