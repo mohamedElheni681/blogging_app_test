@@ -55,20 +55,11 @@
 @endsection
 @section('js')
     <script type="">
-
         $(document).ready(function() {
 
             initialiseJscroll();
 
-            let oldSort = null;
-            let oldSavedSort = localStorage.getItem('sort')
-            if(oldSavedSort){
-                oldSort = oldSavedSort;
-                $(`#${oldSort}`).prop("checked", true);
-            }else{
-                $("#desc").prop("checked", true);
-                oldSort = 'desc'
-            }
+            let oldSort = getSortFilter();
 
             $('.dropdown-el').click(function(e) {
                 e.preventDefault();
@@ -76,21 +67,13 @@
                 $(this).toggleClass('expanded');
                 $('#'+$(e.target).attr('for')).prop('checked',true);
 
-                let sort =   $(e.target).attr('for')
-
-
-                if(oldSort != sort){
-                    oldSort = sort
-                    localStorage.setItem('sort',sort)
-                    window.location.href =  window.location.pathname + '?' + 'sort=' + sort;
-                }
+                sortPosts(e, oldSort);
 
             });
 
             $(document).click(function() {
                 $('.dropdown-el').removeClass('expanded');
             });
-
 
         });
 

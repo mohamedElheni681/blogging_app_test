@@ -94,3 +94,25 @@ function windowScroll() {
     $('.sidebar').css("position", "fixed")
     $(window).scroll();
 }
+
+function getSortFilter() {
+    let oldSort = null;
+    let oldSavedSort = localStorage.getItem('sort')
+    if (oldSavedSort) {
+        oldSort = oldSavedSort;
+        $(`#${oldSort}`).prop("checked", true);
+    } else {
+        $("#desc").prop("checked", true);
+        oldSort = 'desc'
+    }
+    return oldSort;
+}
+function sortPosts(e, oldSort) {
+    let sort = $(e.target).attr('for')
+
+    if (oldSort != sort) {
+        oldSort = sort
+        localStorage.setItem('sort', sort)
+        window.location.href = window.location.pathname + '?' + 'sort=' + sort;
+    }
+}
