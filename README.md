@@ -50,6 +50,16 @@ docker network create shared_blog
 ./vendor/bin/sail artisan migrate --seed
 ```
 
+#### seed will create customer user with admin role:
+### email: customer@test.com
+### password: password
+
+#### Application ports:
+#### blogging platform: 
+- http://localhost:8084/
+#### phpMyAdmin:
+- http://localhost:8083/
+
 ## RUN AUTO IMPORT COMMAND
 ```bash
 ./vendor/bin/sail artisan command:import-posts
