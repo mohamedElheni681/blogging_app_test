@@ -37,9 +37,9 @@ docker network create shared_blog
 ./vendor/bin/sail artisan migrate
 ```
 #### Note If you face ".../storage/logs" and its not buildable: Permissions denied ? run   
-- ./vendor/bin/sail artisan artisan route:clear
-- ./vendor/bin/sail artisan artisan config:clear
-- ./vendor/bin/sail artisan artisan cache:clear
+- ./vendor/bin/sail artisan route:clear
+- ./vendor/bin/sail artisan config:clear
+- ./vendor/bin/sail artisan cache:clear
 - ./vendor/bin/sail artisan config:cache
 10)
 ```bash
